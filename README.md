@@ -28,3 +28,17 @@ cs.primary change avec le theme. Colors.teal reste toujours la meme couleur
 
 ## capture de resultat (palier 2):
 ![alt text](image.png)
+
+## Questions de compréhension (palier 2):
+
+# Q4. Pourquoi placer DecoratedBox en premier ?
+Le degrade sera cache par l'image et le texte sera difficile a lire
+
+# Q5. Que se passe-t-il si on retire ClipRRect ?
+Les coins arrondis disparaissent
+
+# Q6. Pourquoi right: 130 dans Positioned ?
+Pour laisser de la place au bouton Decouvrir 
+
+## capture de resultat (palier 3):
+![alt text](image-1.png)
