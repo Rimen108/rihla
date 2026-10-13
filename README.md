@@ -29,7 +29,7 @@ cs.primary change avec le theme. Colors.teal reste toujours la meme couleur
 ## capture de resultat (palier 2):
 ![alt text](image.png)
 
-## Questions de compréhension (palier 2):
+## Questions de compréhension (palier 3):
 
 # Q4. Pourquoi placer DecoratedBox en premier ?
 Le degrade sera cache par l'image et le texte sera difficile a lire
@@ -42,3 +42,14 @@ Pour laisser de la place au bouton Decouvrir
 
 ## capture de resultat (palier 3):
 ![alt text](image-1.png)
+
+## Questions de compréhension (palier 4):
+
+# Q7.	Pourquoi la Row « note / prix » a-t-elle besoin que la Column soit dans un Expanded pour que Spacer fonctionne ?
+Expanded donne toute la place disponible à la Column. Spacer pousse alors le prix a droite.
+
+# Q8.	Combien de lignes faudrait-il ajouter pour afficher une 7e destination ? Dans quel fichier ?
+Ajouter une ligne dans lib/data/destinations.dart. La nouvelle destination s'affiche automatiquement.
+
+## capture de resultat (palier 4):
+![alt text](image-2.png)
