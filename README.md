@@ -15,3 +15,16 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+## Questions de compréhension (palier 2):
+
+# Q1. Sans Expanded, où se place l'avatar ?
+L'avatar se place juste après le texte. Avec Expanded, il se place à droite
+
+# Q2. Pourquoi prenom est final ?
+Parce que sa valeur ne change pas
+
+# Q3. Différence entre cs.primary et Colors.teal ?
+cs.primary change avec le theme. Colors.teal reste toujours la meme couleur
+
+## capture de resultat (palier 2):
+![alt text](image.png)
