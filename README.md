@@ -53,3 +53,19 @@ Ajouter une ligne dans lib/data/destinations.dart. La nouvelle destination s'aff
 
 ## capture de resultat (palier 4):
 ![alt text](image-2.png)
+
+
+## Questions de compréhension (palier 5):
+
+# Q9. Écrivez _categorie = c; sans setState. Que se passe-t-il à l'écran ? Et en mémoire ?
+La valeur de _categorie change en memoire, mais l'ecran ne se met pas a jour automatiquement
+
+# Q10. Pourquoi _filtrees est-il un getter recalculé à chaque build() plutôt qu'une variable ?
+Le getter recalcule les destinations selon la categorie choisie a chaque build(), pour afficher les bons resultats
+
+# Q11. Pourquoi HeroBanner peut-il rester un StatelessWidget alors que l'écran change ?
+Parce qu'il n'a pas d'etat qui change. Il affiche simplement la destination recue en parametre
+
+## capture de resultat (palier 5):
+![alt text](image-3.png)
+
