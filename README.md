@@ -69,3 +69,10 @@ Parce qu'il n'a pas d'etat qui change. Il affiche simplement la destination recu
 ## capture de resultat (palier 5):
 ![alt text](image-3.png)
 
+## Explication de l'exercice (palier 6):
+Sans ValueKey, Flutter peut associer un favori a la mauvaise destination apres un filtrage. Avec ValueKey(d.nom), chaque carte garde son propre favori, meme si la liste change
+
+## captures de resultat (palier 6):
+![alt text](image-4.png)
+![alt text](image-5.png)
+
