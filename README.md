@@ -145,3 +145,22 @@ readOnly empeche l'utilisateur de taper une date manuellement et oblige a utilis
 # Q2.	_total est un getter. Pourquoi n'a-t-on pas besoin de le mettre à jour nous-mêmes quand la formule change ?
 
 _total se recalcule automatiquement à chaque build() quand _formule change avec setState()
+
+
+## capture de resultat (palier5):
+
+![alt text](image-18.png)
+
+## Questions de compréhension (palier 5):
+
+# Q1.	Que vaut reservation si l'utilisateur quitte le formulaire avec la flèche retour ?
+
+reservation vaut null, car le bouton retour ferme le formulaire sans renvoyer de resultat
+
+# Q2.	Retirez le test mounted : quel avertissement affiche VS Code ? Que signifie-t-il ?
+
+VS Code affiche un avertissement car on utilise context apres un await, alors que l'ecran peut etre deja ferme. mounted verifie que l'ecran existe encore
+
+# Q3.	Le bouton « Parfait » ferme la boîte de dialogue avec Navigator.pop. Qu'est-ce que cela vous apprend sur les boîtes de dialogue ?
+
+Une boite de dialogue est comme un ecran : Navigator.pop() permet de la fermer et de revenir a l'ecran precedent

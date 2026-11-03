@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../models/destination.dart';
 import '../widgets/favorite_button.dart';
 import 'reservation_screen.dart';
+import '../models/reservation.dart';
 
 class DetailScreen extends StatefulWidget {
   final Destination destination;
@@ -14,6 +15,44 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen> {
   int _voyageurs = 1;
+    Future<void> _reserver() async {
+    // TODO 3 : si reservation est null (retour sans valider), s'arrêter
+    final reservation = await Navigator.push<Reservation>(
+      context,
+      MaterialPageRoute(
+        builder: (context) => ReservationScreen(
+          destination: widget.destination,
+          voyageurs: _voyageurs,
+        ),
+      ),
+    );
+
+    // TODO 4 : si l'écran n'est plus affiché (!mounted), s'arrêter
+    if (reservation == null) return;
+
+    // TODO 5 : nom, destination, voyageurs,
+    if (!mounted) return;
+
+    await showDialog<void>(
+      context: context,
+      builder: (context) => AlertDialog(
+        icon: const Icon(Icons.check_circle, color: Colors.green, size: 48),
+        title: const Text('Réservation confirmée'),
+        content: Text(
+          '${reservation.nom}, votre séjour à ${reservation.destination.nom} est '
+          'réservé pour ${reservation.voyageurs} voyageur(s), formule ${reservation.formule}.\n\n'
+          'Total : ${reservation.total} DT\n'
+          'Un e-mail de confirmation sera envoyé à ${reservation.email}.',
+        ),
+        actions: [
+          FilledButton(
+            onPressed: () => Navigator.pop(context),
+            child: const Text('Parfait'),
+          ),
+        ],
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -194,19 +233,9 @@ class _DetailScreenState extends State<DetailScreen> {
                 ],
               ),
               const SizedBox(width: 20),
-              Expanded(
+                           Expanded(
                 child: FilledButton(
-                  onPressed: () {
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => ReservationScreen(
-          destination: widget.destination,
-          voyageurs: _voyageurs,
-        ),
-      ),
-    );
-  },
+                  onPressed: _reserver,
                   style: FilledButton.styleFrom(
                     minimumSize: const Size.fromHeight(56),
                   ),
