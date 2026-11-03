@@ -86,7 +86,7 @@ Sans ValueKey, Flutter peut associer un favori a la mauvaise destination apres u
 
 ### TP4 :
 
-## captures de resultat (palier1):
+## capture de resultat (palier1):
 ![alt text](image-10.png)
 
 ## captures de resultat (palier2+bouton découvrir):
@@ -109,3 +109,23 @@ DetailScreen reçoit la destination par son constructeur
 # Q3.	Retirez clipBehavior. Que remarquez-vous quand vous touchez la carte ?
 
 Sans clipBehavior, l'effet d'animation depasse les coins arrondis de la carte
+
+## captures de resultat (palier3):
+
+# messages d'erreur pour les champs vides 
+![alt text](image-13.png)
+# Formulaire valide
+![alt text](image-14.png)
+
+## Questions de compréhension (palier 3):
+# Q1.	Que fait exactement _formKey.currentState!.validate() ? Que renvoie-t-elle ?
+
+validate() verifie tous les champs et renvoie true si tout est correct, sinon false avec les messages d'erreur
+
+# Q2.	inputFormatters et validator contrôlent tous deux le téléphone. Quelle est la différence de rôle ?
+
+inputFormatters bloque les caracteres interdits pendant la saisie, tandis que validator verifie la valeur finale
+
+# Q3.	Pourquoi faut-il appeler dispose() sur les contrôleurs ?
+
+dispose() libere la mémoire utilisee par les controleurs quand on quitte l'ecran
