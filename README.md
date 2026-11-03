@@ -129,3 +129,19 @@ inputFormatters bloque les caracteres interdits pendant la saisie, tandis que va
 # Q3.	Pourquoi faut-il appeler dispose() sur les contrôleurs ?
 
 dispose() libere la mémoire utilisee par les controleurs quand on quitte l'ecran
+
+## captures de resultat (palier4):
+
+![alt text](image-15.png)
+![alt text](image-16.png)
+![alt text](image-17.png)
+
+## Questions de compréhension (palier 4):
+
+# Q1.	Pourquoi le champ date est-il en readOnly ? Que se passerait-il sinon ?
+
+readOnly empeche l'utilisateur de taper une date manuellement et oblige a utiliser le calendrier
+
+# Q2.	_total est un getter. Pourquoi n'a-t-on pas besoin de le mettre à jour nous-mêmes quand la formule change ?
+
+_total se recalcule automatiquement à chaque build() quand _formule change avec setState()
