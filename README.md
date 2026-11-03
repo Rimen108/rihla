@@ -80,3 +80,5 @@ Sans ValueKey, Flutter peut associer un favori a la mauvaise destination apres u
 ![alt text](image-6.png)
 ![alt text](image-7.png)
 ![alt text](image-8.png)
+## captures de resultat (Devoir):
+![alt text](image-9.png)
