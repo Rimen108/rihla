@@ -88,3 +88,24 @@ Sans ValueKey, Flutter peut associer un favori a la mauvaise destination apres u
 
 ## captures de resultat (palier1):
 ![alt text](image-10.png)
+
+## captures de resultat (palier2+bouton découvrir):
+
+# Cliquez sur le bouton « Découvrir »
+![alt text](image-11.png)
+# Cliquez sur la flèche retour
+![alt text](image-12.png)
+
+## Questions de compréhension (palier 2):
+
+# Q1.	Filtrez « Désert », ouvrez Tozeur, puis revenez. Le filtre est-il conservé ? Expliquez avec la notion de pile.
+
+Oui, le filtre est conserve, car push ouvre une nouvelle page et pop revient à la page precedente sans perdre son etat
+
+# Q2.	Comment DetailScreen connaît-il la destination à afficher ? Quel mécanisme du TP 3 est réutilisé ?
+
+DetailScreen reçoit la destination par son constructeur
+
+# Q3.	Retirez clipBehavior. Que remarquez-vous quand vous touchez la carte ?
+
+Sans clipBehavior, l'effet d'animation depasse les coins arrondis de la carte
