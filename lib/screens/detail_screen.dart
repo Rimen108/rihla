@@ -3,6 +3,8 @@ import '../models/destination.dart';
 import '../widgets/favorite_button.dart';
 import 'reservation_screen.dart';
 import '../models/reservation.dart';
+import '../models/avis.dart';
+import 'avis_screen.dart';
 
 class DetailScreen extends StatefulWidget {
   final Destination destination;
@@ -15,6 +17,22 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen> {
   int _voyageurs = 1;
+    final List<Avis> _avis = [];
+
+  Future<void> _laisserAvis() async {
+    final nouvelAvis = await Navigator.push<Avis>(
+      context,
+      MaterialPageRoute(
+        builder: (context) => AvisScreen(destination: widget.destination),
+      ),
+    );
+    if (nouvelAvis == null) return;
+    if (!mounted) return;
+    setState(() => _avis.insert(0, nouvelAvis)); 
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Merci pour votre avis !')),
+    );
+  }
     Future<void> _reserver() async {
     // TODO 3 : si reservation est null (retour sans valider), s'arrêter
     final reservation = await Navigator.push<Reservation>(
@@ -207,8 +225,58 @@ class _DetailScreenState extends State<DetailScreen> {
   onPressed: () => setState(() => _voyageurs++), 
   icon: const Icon(Icons.add),
 ),
+
                   ],
                 ),
+                 const SizedBox(height: 24),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Avis (${_avis.length})',
+                        style: theme.textTheme.titleMedium
+                            ?.copyWith(fontWeight: FontWeight.bold),
+                      ),
+                    ),
+                    TextButton.icon(
+                      onPressed: _laisserAvis,
+                      icon: const Icon(Icons.rate_review_outlined),
+                      label: const Text('Laisser un avis'),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 8),
+                if (_avis.isEmpty)
+                  Text(
+                    'Soyez le premier à donner votre avis.',
+                    style: TextStyle(color: cs.onSurfaceVariant),
+                  )
+                else
+                  ..._avis.map((avis) => Card(
+                        margin: const EdgeInsets.only(bottom: 8),
+                        child: ListTile(
+                          leading: CircleAvatar(
+                            child: Text(avis.auteur[0].toUpperCase()),
+                          ),
+                          title: Row(
+                            children: [
+                              Text(avis.auteur),
+                              const SizedBox(width: 8),
+                              ...List.generate(
+                                5,
+                                (i) => Icon(
+                                  i < avis.note
+                                      ? Icons.star
+                                      : Icons.star_border,
+                                  color: Colors.amber,
+                                  size: 16,
+                                ),
+                              ),
+                            ],
+                          ),
+                          subtitle: Text(avis.commentaire),
+                        ),
+                      )),
               ],
             ),
           ),

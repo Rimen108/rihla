@@ -164,3 +164,7 @@ VS Code affiche un avertissement car on utilise context apres un await, alors qu
 # Q3.	Le bouton « Parfait » ferme la boîte de dialogue avec Navigator.pop. Qu'est-ce que cela vous apprend sur les boîtes de dialogue ?
 
 Une boite de dialogue est comme un ecran : Navigator.pop() permet de la fermer et de revenir a l'ecran precedent
+
+## capture de resultat (Checkpoint 1):
+![alt text](image-20.png)
+![alt text](image-19.png)
