@@ -218,3 +218,21 @@ L'application plante et affiche un ecran rouge, car elle ne recoit pas de donnee
 Non. Les donnees sont deja chargees depuis le serveur dans initState()
 
 Quand l'utilisateur change de categorie, setState() met seulement a jour l'affichage et filtre les donnees deja chargees.
+
+## captures des resultats (palier 4):
+![alt text](image-26.png)
+![alt text](image-27.png)
+
+## Questions de compréhension (palier 4):
+
+# Q1.Pourquoi envoie-t-on destinationId plutôt que toute la destination ?
+Parce que le serveur possede deja les informations de la destination. On envoie seulement son ID pour que le serveur puisse la retrouver
+
+# Q2.Que se passe-t-il côté serveur si on oublie l'en-tête Content-Type ?
+Le serveur peut ne pas reconnaitre les donnees JSON et ne pas les enregistrer correctement
+
+# Q3.Pourquoi faut-il tester mounted après l'await de creerReservation ?
+Parce que pendant l'attente, l'utilisateur peut quitter l'ecran
+
+Si l'ecran est ferme, on ne peut plus utiliser son context
+
