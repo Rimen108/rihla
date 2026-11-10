@@ -188,3 +188,33 @@ C'est le serveur qui a cree l'id automatiquement. Nous n'avons pas envoye d'id d
 GET : sert a recuperer des donnees. On utilise l'URL pour choisir les donnees.
 
 POST : sert a creer une nouvelle donnee. On envoie les informations dans le corps de la requete.
+
+## Questions de compréhension (palier 2):
+
+# Q1. QPourquoi fromJson est-il un constructeur factory et non une méthode ordinaire  ?
+Parce que factory permet de creer un objet directement a partir des donnees JSON
+
+# Q2.Que se passe-t-il si db.json contient "prix": "420" (entre guillemets) ?
+Le programme affiche une erreur, car "420" est un String (texte) et non un nombre
+
+# Q3.Pourquoi la méthode renvoie-t-elle un Future<List<Destination>> et non une List<Destination> ?
+
+Parce que les donnees du serveur prennent du temps pour arriver
+
+## captures des resultats (palier 3):
+![alt text](image-23.png)
+![alt text](image-24.png)
+![alt text](image-25.png)
+
+## Questions de compréhension (palier 3):
+
+# Q1.Pourquoi déclare-t-on _futurDestinations avec late ?
+Parce qu'on va donner une valeur a _futurDestinations plus tard, dans initState()
+
+# Q2.Que verrait l'utilisateur sans le test snapshot.hasError quand le serveur est arrêté ?
+L'application plante et affiche un ecran rouge, car elle ne recoit pas de donnees du serveur
+
+# Q3.Le changement de catégorie fait-il une nouvelle requête au serveur ? Pourquoi ?
+Non. Les donnees sont deja chargees depuis le serveur dans initState()
+
+Quand l'utilisateur change de categorie, setState() met seulement a jour l'affichage et filtre les donnees deja chargees.
