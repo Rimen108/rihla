@@ -168,3 +168,23 @@ Une boite de dialogue est comme un ecran : Navigator.pop() permet de la fermer e
 ## capture de resultat (Checkpoint 1):
 ![alt text](image-20.png)
 ![alt text](image-19.png)
+
+## captures des testes avec Thunder Client (palier 0):
+
+![alt text](image-21.png)
+![alt text](image-22.png)
+
+## Questions de compréhension (palier 0):
+
+# Q1. Quel code renvoie /destinations/99 ? À quelle famille de codes appartient-il ?
+Le code est 404 Not Found. Il appartient a la famille 4xx. Cela signifie que la destination 99 n'existe pas.
+
+# Q2.	Qui a choisi l'id de la réservation créée : vous ou le serveur ?
+
+C'est le serveur qui a cree l'id automatiquement. Nous n'avons pas envoye d'id dans la requete POST.
+
+# Q3.	Pourquoi la requête GET n'a-t-elle pas de corps, contrairement au POST ?
+
+GET : sert a recuperer des donnees. On utilise l'URL pour choisir les donnees.
+
+POST : sert a creer une nouvelle donnee. On envoie les informations dans le corps de la requete.
