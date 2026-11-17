@@ -275,3 +275,6 @@ Parce que la Partie 3 a ete fusionnee dans main avant de creer la branche de la 
 # Q2. Que se passe-t-il si j'oublie de supprimer un marqueur ======= ?
 
 Le code devient incorrect et Flutter ne peut plus lancer l'application. Il faut supprimer les trois marqueurs (<<<<<<<, =======, >>>>>>>) et garder le code final.
+
+# journal AI :
+![alt text](image-37.png)
