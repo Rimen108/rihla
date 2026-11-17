@@ -7,7 +7,7 @@ import '../widgets/section_title.dart';
 import '../widgets/destination_card.dart';
 import '../models/destination.dart';
 import '../services/api_service.dart';
- 
+import 'mes_reservations_screen.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
@@ -116,7 +116,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: SafeArea(
         child: _onglet == 0
             ? _construireExplorer()
-            : const Center(child: Text('Bientôt disponible')),
+             : const MesReservationsScreen(),
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _onglet,
@@ -136,11 +136,11 @@ class _HomeScreenState extends State<HomeScreen> {
             selectedIcon: Icon(Icons.favorite),
             label: 'Favoris',
           ),
-          NavigationDestination(
-            icon: Icon(Icons.person_outline),
-            selectedIcon: Icon(Icons.person),
-            label: 'Profil',
-          ),
+            NavigationDestination(
+            icon: Icon(Icons.luggage_outlined),
+            selectedIcon:Icon(Icons.luggage),
+            label: 'Voyages',  
+),
         ],
       ),
     );
