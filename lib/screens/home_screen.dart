@@ -114,9 +114,14 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: _onglet == 0
-            ? _construireExplorer()
-             : const MesReservationsScreen(),
+        child: IndexedStack(
+          index: _onglet,
+          children: [
+            _construireExplorer(),   
+             const Center(child: Text('Bientôt disponible')),                        
+            const MesReservationsScreen(),                  
+          ],
+        ),
       ),
       bottomNavigationBar: NavigationBar(
         selectedIndex: _onglet,

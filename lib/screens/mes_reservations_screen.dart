@@ -19,7 +19,9 @@ class _MesReservationsScreenState extends State<MesReservationsScreen> {
 
   Future<void> _recharger() async {
     final futur = ApiService.getReservations();
-    setState(() => _futurReservations = futur);
+    setState(() {
+    _futurReservations = futur;
+  });
     try { await futur; } catch (_) {}
   }
 

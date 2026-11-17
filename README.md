@@ -236,3 +236,6 @@ Parce que pendant l'attente, l'utilisateur peut quitter l'ecran
 
 Si l'ecran est ferme, on ne peut plus utiliser son context
 
+## capture de resultat (palier 5):
+![alt text](image-28.png)
+
