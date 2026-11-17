@@ -265,3 +265,13 @@ Parce que chaque destination possede un id unique. Meme si on recharge les desti
 
 # Q3.Pourquoi les favoris disparaissent-ils après un hot restart ?
 Parce que les favoris sont gardes seulement dans la memoire de l'application. Quand on redemarre l'application, ils sont perdus. Pour les garder, meme apres un redemarrage, on peut utiliser shared_preferences ou sqflite.
+
+## Questions de compréhension (palier 4):
+
+# Q1.Pourquoi la Partie 3 n'a-t-elle produit aucun conflit ?
+
+Parce que la Partie 3 a ete fusionnee dans main avant de creer la branche de la Partie 4. Les deux branches n'ont donc pas modifie les memes lignes en meme temps. Git a pu faire la fusion automatiquement.
+
+# Q2. Que se passe-t-il si j'oublie de supprimer un marqueur ======= ?
+
+Le code devient incorrect et Flutter ne peut plus lancer l'application. Il faut supprimer les trois marqueurs (<<<<<<<, =======, >>>>>>>) et garder le code final.
