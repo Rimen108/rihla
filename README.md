@@ -242,3 +242,26 @@ Si l'ecran est ferme, on ne peut plus utiliser son context
 ## captures des resultats (bonus):
 ![alt text](image-29.png)
 ![alt text](image-30.png)
+
+## captures des resultats (palier 2):
+# Aimer Djerba sur la carte, ouvrir le détail:
+![alt text](image-31.png)
+![alt text](image-32.png)
+# Retirer le favori depuis le détail, revenir:
+![alt text](image-33.png)
+![alt text](image-34.png)
+# Onglet Favoris:
+![alt text](image-35.png)
+# Hot restart:
+![alt text](image-36.png)
+
+## Questions de compréhension (palier 2):
+
+# Q1.Pourquoi FavoriteButton peut-il être un StatelessWidget alors que son affichage change ?
+Parce qu'il ne garde pas son propre etat. Il recupere les informations depuis FavorisModel. Quand les favoris changent, Provider met automatiquement a jour son affichage
+
+# Q2.Pourquoi ranger les favoris par id plutôt que de stocker les objets dans un Set<Destination>, sachant que la liste est rechargée depuis json-server ?
+Parce que chaque destination possede un id unique. Meme si on recharge les destinations depuis l'API, on peut toujours reconnaitre le meme favori grace a son id
+
+# Q3.Pourquoi les favoris disparaissent-ils après un hot restart ?
+Parce que les favoris sont gardes seulement dans la memoire de l'application. Quand on redemarre l'application, ils sont perdus. Pour les garder, meme apres un redemarrage, on peut utiliser shared_preferences ou sqflite.
