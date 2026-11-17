@@ -24,4 +24,8 @@ List<Destination> get liste => List.unmodifiable(_favoris.values);
     notifyListeners();
     return ajoute;
   }
+    void reinitialiser() {
+    _favoris.clear();
+    notifyListeners();
+  }
 }
