@@ -57,5 +57,14 @@ static Future<List<Reservation>> getReservations() async {
     final List<dynamic> liste = jsonDecode(utf8.decode(reponse.bodyBytes));
     return liste.map((e) => Reservation.fromJson(e)).toList();
   }
+  static Future<void> supprimerReservation(String id) async {
+  final reponse = await http
+      .delete(_url('/reservations/$id'))
+      .timeout(ApiConfig.timeout);
+
+  if (reponse.statusCode != 200) {
+    throw Exception('Erreur suppression : ${reponse.statusCode}');
+  }
+}
 
 }

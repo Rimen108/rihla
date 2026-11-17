@@ -239,3 +239,6 @@ Si l'ecran est ferme, on ne peut plus utiliser son context
 ## capture de resultat (palier 5):
 ![alt text](image-28.png)
 
+## captures des resultats (bonus):
+![alt text](image-29.png)
+![alt text](image-30.png)

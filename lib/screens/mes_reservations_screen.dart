@@ -10,6 +10,9 @@ class MesReservationsScreen extends StatefulWidget {
 
 class _MesReservationsScreenState extends State<MesReservationsScreen> {
   late Future<List<Reservation>> _futurReservations;
+  
+ 
+  List<Reservation>? _reservations;
 
   @override
   void initState() {
@@ -20,9 +23,12 @@ class _MesReservationsScreenState extends State<MesReservationsScreen> {
   Future<void> _recharger() async {
     final futur = ApiService.getReservations();
     setState(() {
-    _futurReservations = futur;
-  });
-    try { await futur; } catch (_) {}
+      _futurReservations = futur;
+      _reservations = null;
+    });
+    try {
+      await futur;
+    } catch (_) {}
   }
 
   String _formatDate(DateTime d) {
@@ -47,7 +53,8 @@ class _MesReservationsScreenState extends State<MesReservationsScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(Icons.cloud_off, color: Theme.of(context).colorScheme.error, size: 64),
+                  Icon(Icons.cloud_off,
+                      color: Theme.of(context).colorScheme.error, size: 64),
                   const SizedBox(height: 16),
                   const Text('Impossible de charger vos voyages.'),
                   const SizedBox(height: 16),
@@ -60,34 +67,72 @@ class _MesReservationsScreenState extends State<MesReservationsScreen> {
               ),
             );
           }
+
           
-          final reservations = snapshot.data!;
-          if (reservations.isEmpty) {
-            return const Center(child: Text('Aucune réservation pour le moment'));
+          _reservations ??= snapshot.data!;
+
+          if (_reservations!.isEmpty) {
+            return const Center(
+                child: Text('Aucune réservation pour le moment'));
           }
-          
+
           return RefreshIndicator(
             onRefresh: _recharger,
             child: ListView.builder(
               physics: const AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.all(16),
-              itemCount: reservations.length,
+              itemCount: _reservations!.length, 
               itemBuilder: (context, index) {
-                final r = reservations[index];
-                return Card(
-                  margin: const EdgeInsets.only(bottom: 12),
-                  child: ListTile(
-                    leading: ClipRRect(
-                      borderRadius: BorderRadius.circular(8),
-                      child: Image.asset(
-                        r.destination.image,
-                        width: 60, height: 60, fit: BoxFit.cover,
+                final r = _reservations![index]; 
+
+                return Dismissible(
+                  key: ValueKey(r.id),
+                  direction: DismissDirection.endToStart,
+                  background: Container(
+                    color: Colors.red,
+                    alignment: Alignment.centerRight,
+                    padding: const EdgeInsets.only(right: 20),
+                    child: const Icon(Icons.delete, color: Colors.white),
+                  ),
+                  onDismissed: (_) async {
+                  
+                    setState(() {
+                      _reservations!.removeAt(index);
+                    });
+                  
+                    try {
+                      await ApiService.supprimerReservation(r.id!);
+                    } catch (e) {
+                      if (mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(
+                          const SnackBar(
+                              content: Text('Suppression impossible')),
+                        );
+                      }
+                    }
+                  },
+                  child: Card(
+                    margin: const EdgeInsets.only(bottom: 12),
+                    child: ListTile(
+                      leading: ClipRRect(
+                        borderRadius: BorderRadius.circular(8),
+                        child: Image.asset(
+                          r.destination.image,
+                          width: 60,
+                          height: 60,
+                          fit: BoxFit.cover,
+                        ),
                       ),
+                      title: Text(r.destination.nom,
+                          style:
+                              const TextStyle(fontWeight: FontWeight.bold)),
+                      subtitle: Text(
+                          'Départ le ${_formatDate(r.dateDepart)}\n${r.voyageurs} voyageur(s) • ${r.formule}'),
+                      trailing: Text('${r.total.toStringAsFixed(0)} DT',
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.blue)),
                     ),
-                    title: Text(r.destination.nom, style: const TextStyle(fontWeight: FontWeight.bold)),
-                    subtitle: Text('Départ le ${_formatDate(r.dateDepart)}\n${r.voyageurs} voyageur(s) • ${r.formule}'),
-                    trailing: Text('${r.total.toStringAsFixed(0)} DT',
-                        style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.blue)),
                   ),
                 );
               },
