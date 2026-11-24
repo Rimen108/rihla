@@ -278,3 +278,14 @@ Le code devient incorrect et Flutter ne peut plus lancer l'application. Il faut 
 
 # journal AI :
 ![alt text](image-37.png)
+
+
+
+## capture de resultat (palier 1 : apres un hot restart R):
+![alt text](image-38.png)
+
+## capture de resultat (palier 2 : apres un hot restart R):
+![alt text](image-39.png)
+
+## capture de resultat (palier 3 : apres l'arret json-serve):
+![alt text](image-40.png)
