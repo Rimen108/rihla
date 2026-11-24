@@ -62,9 +62,31 @@ class _HomeScreenState extends State<HomeScreen> {
             onReessayer: _recharger,
           );
         }
+if (snapshot.hasData) {
+          return Column(
+            children: [
+              if (ApiService.depuisCache)
+                Container(
+                  width: double.infinity,
+                  color: Colors.amber.shade100,
+                  padding: const EdgeInsets.all(8),
+                  child: const Text(
+                    'Hors connexion : données enregistrées',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.black87),
+                  ),
+                ),
+              Expanded(
+                child: RefreshIndicator(
+                  onRefresh: _recharger,
+                  child: _construireAccueil(snapshot.data!),
+                ),
+              ),
+            ],
+          );
+        }
 
-        final destinations = snapshot.data!;
-        return _construireAccueil(destinations);
+        return const SizedBox.shrink();
       },
     );
   }
