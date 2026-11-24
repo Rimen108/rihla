@@ -283,3 +283,6 @@ Le code devient incorrect et Flutter ne peut plus lancer l'application. Il faut 
 
 ## capture de resultat (palier 1 : apres un hot restart R):
 ![alt text](image-38.png)
+
+## capture de resultat (palier 2 : apres un hot restart R):
+![alt text](image-39.png)
