@@ -289,3 +289,6 @@ Le code devient incorrect et Flutter ne peut plus lancer l'application. Il faut 
 
 ## capture de resultat (palier 3 : apres l'arret json-serve):
 ![alt text](image-40.png)
+
+# journal AI :
+![alt text](journal_ia.png)
